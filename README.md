@@ -30,15 +30,15 @@ PEP 3333에 정의되어 있는 environ의 기본적인 의미는 모두 같은 
 | `dogu.push` | push할 수 있는 callable object다. HTTP/1.x 이하의  reqeust라면 호출하여도 아무반응을 하지 않고 return False를 한다. |
 | `dogu.push_enabled` | client가 push를 받아드릴 수 있는지에 대해서 나타내는 boolean 타입이다. HTTP/1.x 이하의 reqeust라면 False가 기본이다. |
 
+#### _dogu.push_ callable object
 
-#### _dogu.push_ callable
+dogu.push는 _(`push_headers`, `app`)_ 형식의 매개변수 형식을 갖고 boolean을 반환하는 callable object다. push_headers는 start_response에서 response_headers의  _(`header_name`, `header_value`)_ 형식의 tuple들이 모여 있는 list type의 변수다. HTTP/2에서 PUSH_PROMISE header에 들어갈 것이며 HTTP/2의 pseudo header들도 이 변수 안에 포함되어 있어야한다. `app`은 WSGI v 1.0.1 (PEP 3333)에서 정의하고 있는 environ과 start_response를 매개변수로 갖는 Application/Framework side의 callable object다. 만약 client가 HTTP/1.1로 연결했다면 Application이 _dogu.push_를 호출한다면 아무일 없이 False가 반환된다. 만약 client가 HTTP/2 유저라 하여도 `Server Push` client의 설정으로 인해서 기능이 불가능하다면 이런 경우에도 False가 반환된다. 하지만 정상적인 `Server Push`가 가능한 상황이라면 True가 반환되어, `Server Push`가 정상적으로 처리되었는지에 대해서 확인이 가능하다.
 
-dogu.push는 _(`push_headers`, `app`)_ 형식의 매개변수 형식을 갖고 있는 callable object다. push_headers는 start_response에서 response_headers의  _(`header_name`, `header_value`)_ 형식의 tuple들이 모여 있는 list type의 변수다. HTTP/2에서 PUSH_PROMISE header에 들어갈 것이며 HTTP/2의 pseudo header들도 이 변수 안에 포함되어 있어야한다. `app`은 WSGI v 1.0.1 (PEP 3333)에서 정의하고 있는 environ과 start_response를 매개변수로 갖는 Application/Framework side의 callable object다.
-
-#### wsgi.input stream
+#### wsgi.input stream object
 
 wsgi.input은 ```readline(limit=-1)```과 ```read(n=-1)```을 지원한다.
 
 * ```readline(limit=-1)```은 stream으로 부터 한 줄을 읽어들이는 stream이고, `limit`이 설정되어 있다면 read를 할 때 `limit` 길이만큼 단위의 사이즈 만큼 읽어들인다. 한 줄의 기준은 b'\n'를 기준으로 한다.
 
 * ```read(n=-1)```은 `n`길이만큼의 binary를 읽어오게되고, n이 음수라면 읽을 수 있는 만큼의 모든 data를 읽을 수 있다.
+
