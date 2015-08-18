@@ -27,11 +27,11 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 | `RAW_QUERY_STRING` | decoding이 안된 QUERY_STRING 이다. |
 | `dogu.version` | (1, 0)의 tuple이다. |
 | `dogu.push` | push할 수 있는 callable object다. HTTP/1.x 이하의  reqeust라면 호출하여도 아무반응을 하지 않고 return False를 한다. |
-| SCRIPT_NAME | request의 URL에서 최종적으로 가르키고 있는 파일의 이름에 해당하는 부분으로, 없다면 빈 문자열로 처리한다.  |
-| PATH_INFO | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
-| QUERY_STRING | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
-| REMOTE_ADDR | client의 IP v4주소를 갖는다. *required* |
-| SERVER_SOFTWARE | 서버의 이름과 버전을 표시한다. 없다면 빈 문자열로 처리한다. |
+| `SCRIPT_NAME` | request의 URL에서 최종적으로 가르키고 있는 파일의 이름에 해당하는 부분으로, 없다면 빈 문자열로 처리한다.  |
+| `PATH_INFO` | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
+| `QUERY_STRING` | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
+| `REMOTE_ADDR` | client의 IP v4주소를 갖는다. *required* |
+| `SERVER_SOFTWARE` | 서버의 이름과 버전을 표시한다. 없다면 빈 문자열로 처리한다. |
 | `dogu.push_enabled` | client가 push를 받아드릴 수 있는지에 대해서 나타내는 boolean 타입이다. HTTP/1.x 이하의 reqeust라면 False가 기본이다. |
 
 #### _dogu.version_ tuple variable
@@ -53,4 +53,3 @@ wsgi.input은 ```readline(limit=-1)```과 ```read(n=-1)```을 지원한다.
 * ```readline(limit=-1)```은 stream으로 부터 한 줄을 읽어들이는 stream이고, `limit`이 설정되어 있다면 read를 할 때 `limit` 길이만큼 단위의 사이즈 만큼 읽어들인다. 한 줄의 기준은 b'\n'를 기준으로 한다.
 
 * ```read(n=-1)```은 `n`길이만큼의 binary를 읽어오게되고, n이 음수라면 읽을 수 있는 만큼의 모든 data를 읽을 수 있다.
-
