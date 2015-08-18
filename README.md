@@ -30,6 +30,10 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 | `dogu.push` | push할 수 있는 callable object다. HTTP/1.x 이하의  reqeust라면 호출하여도 아무반응을 하지 않고 return False를 한다. |
 | `dogu.push_enabled` | client가 push를 받아드릴 수 있는지에 대해서 나타내는 boolean 타입이다. HTTP/1.x 이하의 reqeust라면 False가 기본이다. |
 
+#### _dogu.version_ tuple variable
+
+이 값은 tuple형의 변수이며 첫번째 요소로 major 버전을 나타내고, 두번째 요소에서 minor 버전을 나타낸다. 이를 통해서 DoGu Interface의 버전에 대해서 나타내고 있고, WSGI와의 하위호환을 위해서 environ에는  _wsgi.version_ 도 tuple형으로 포함되어 있어야한다. Application은 이 값을 통해서 Server가 DoGu Interface 1.0을 지원하고 있는지 확인 할 수 있다.
+
 #### _dogu.push_enabled_ boolean variable
 
 HTTP/2에서는 client의 설정에 따라서 `Server Push`기능을 사용하지 않을 수 있다, 또한 client가 HTTP/1.x 이하의 버전을 사용하고 있는 유저라면 `Server Push` 기능을 지원하지 않을 것이다, 이런경우 _environ_ 에 있는 _dogu.push_enabled_ 는 False값을 갖는다. 하지만 이런 경우가 아닌 정상적으로 Server Push가 사용사능한 경우라면 True값을 갖게 된다.
