@@ -30,6 +30,10 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 | `dogu.push` | push할 수 있는 callable object다. HTTP/1.x 이하의  reqeust라면 호출하여도 아무반응을 하지 않고 return False를 한다. |
 | `dogu.push_enabled` | client가 push를 받아드릴 수 있는지에 대해서 나타내는 boolean 타입이다. HTTP/1.x 이하의 reqeust라면 False가 기본이다. |
 
+#### _dogu.push_enabled_ boolean variable
+
+HTTP/2에서는 client의 설정에 따라서 `Server Push`기능을 사용하지 않을 수 있다, 또한 client가 HTTP/1.x 이하의 버전을 사용하고 있는 유저라면 `Server Push` 기능을 지원하지 않을 것이다, 이런경우 _environ_ 에 있는 _dogu.push_enabled_ 는 False값을 갖는다. 하지만 이런 경우가 아닌 정상적으로 Server Push가 사용사능한 경우라면 True값을 갖게 된다.
+
 #### _dogu.push_ callable object
 
 dogu.push는 _(`push_headers`, `app`)_ 형식의 매개변수 형식을 갖고, boolean을 반환하는 callable object다. push_headers는 start_response에서 response_headers의  _(`header_name`, `header_value`)_ 형식의 tuple들이 모여 있는 list type의 변수다. HTTP/2에서 PUSH_PROMISE header에 들어갈 것이며 HTTP/2의 pseudo header들도 이 변수 안에 포함되어 있어야한다. `app`은 WSGI v 1.0.1 ([PEP 3333](https://www.python.org/dev/peps/pep-3333/))에서 정의하고 있는 environ과 start_response를 매개변수로 갖는 Application/Framework side의 callable object다. 만약 client가 HTTP/1.1로 연결했다면 Application이 _dogu.push_를 호출한다면 아무일 없이 False가 반환된다. 또한 client가 HTTP/2 유저라 하여도 `Server Push` client의 설정으로 인해서 기능이 불가능하다면 이런 경우에도 False가 반환된다. 하지만 정상적인 `Server Push`가 가능한 상황이라면 True가 반환되어, `Server Push`가 정상적으로 처리되었는지에 대해서 확인이 가능하다.
