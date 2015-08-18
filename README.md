@@ -27,6 +27,11 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 | `RAW_QUERY_STRING` | decoding이 안된 QUERY_STRING 이다. |
 | `dogu.version` | (1, 0)의 tuple이다. |
 | `dogu.push` | push할 수 있는 callable object다. HTTP/1.x 이하의  reqeust라면 호출하여도 아무반응을 하지 않고 return False를 한다. |
+| SCRIPT_NAME | request의 URL에서 최종적으로 가르키고 있는 파일의 이름에 해당하는 부분으로, 없다면 빈 문자열로 처리한다.  |
+| PATH_INFO | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
+| QUERY_STRING | 해당하는 값이 없다면 빈 문자열로 처리한다. | 
+| REMOTE_ADDR | client의 IP v4주소를 갖는다. *required* |
+| SERVER_SOFTWARE | 서버의 이름과 버전을 표시한다. 없다면 빈 문자열로 처리한다. |
 | `dogu.push_enabled` | client가 push를 받아드릴 수 있는지에 대해서 나타내는 boolean 타입이다. HTTP/1.x 이하의 reqeust라면 False가 기본이다. |
 
 #### _dogu.version_ tuple variable
