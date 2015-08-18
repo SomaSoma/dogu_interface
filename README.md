@@ -2,7 +2,7 @@
 
 ## Abstract
 
-이 문서는 PEP 3333에 명시되어 있는 WSGI v1.0.1(Python Web Server Gateway Interface)를 HTTP/2의 기능 활용을 위해서 내용을 확장하였고, [WSGI 2.0 Proposal](http://wsgi.readthedocs.org/en/latest/proposals-2.0.html) 내용을 부분 적용한 표준 interface입니다.
+이 문서는 [PEP 3333](https://www.python.org/dev/peps/pep-3333/)에 명시되어 있는 WSGI v1.0.1(Python Web Server Gateway Interface)를 HTTP/2의 기능 활용을 위해서 내용을 확장하였고, [WSGI 2.0 Proposal](http://wsgi.readthedocs.org/en/latest/proposals-2.0.html) 내용을 부분 적용한 표준 interface입니다.
 
 ## Specification Overview
 
@@ -17,7 +17,7 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 
 #### environ Variables
 
-PEP 3333에 정의되어 있는 environ의 기본적인 의미는 모두 같은 의미로 사용한다. 이 밑에는 차이점에 대해서만 정의한다.
+[PEP 3333](https://www.python.org/dev/peps/pep-3333/)에 정의되어 있는 environ의 기본적인 의미는 모두 같은 의미로 사용한다. 이 밑에는 차이점에 대해서만 정의한다.
 
 | 환경변수 이름  | 의미				     |
 |------------------|-----------------------------|
@@ -32,7 +32,7 @@ PEP 3333에 정의되어 있는 environ의 기본적인 의미는 모두 같은 
 
 #### _dogu.push_ callable object
 
-dogu.push는 _(`push_headers`, `app`)_ 형식의 매개변수 형식을 갖고 boolean을 반환하는 callable object다. push_headers는 start_response에서 response_headers의  _(`header_name`, `header_value`)_ 형식의 tuple들이 모여 있는 list type의 변수다. HTTP/2에서 PUSH_PROMISE header에 들어갈 것이며 HTTP/2의 pseudo header들도 이 변수 안에 포함되어 있어야한다. `app`은 WSGI v 1.0.1 (PEP 3333)에서 정의하고 있는 environ과 start_response를 매개변수로 갖는 Application/Framework side의 callable object다. 만약 client가 HTTP/1.1로 연결했다면 Application이 _dogu.push_를 호출한다면 아무일 없이 False가 반환된다. 만약 client가 HTTP/2 유저라 하여도 `Server Push` client의 설정으로 인해서 기능이 불가능하다면 이런 경우에도 False가 반환된다. 하지만 정상적인 `Server Push`가 가능한 상황이라면 True가 반환되어, `Server Push`가 정상적으로 처리되었는지에 대해서 확인이 가능하다.
+dogu.push는 _(`push_headers`, `app`)_ 형식의 매개변수 형식을 갖고 boolean을 반환하는 callable object다. push_headers는 start_response에서 response_headers의  _(`header_name`, `header_value`)_ 형식의 tuple들이 모여 있는 list type의 변수다. HTTP/2에서 PUSH_PROMISE header에 들어갈 것이며 HTTP/2의 pseudo header들도 이 변수 안에 포함되어 있어야한다. `app`은 WSGI v 1.0.1 ([PEP 3333](https://www.python.org/dev/peps/pep-3333/))에서 정의하고 있는 environ과 start_response를 매개변수로 갖는 Application/Framework side의 callable object다. 만약 client가 HTTP/1.1로 연결했다면 Application이 _dogu.push_를 호출한다면 아무일 없이 False가 반환된다. 만약 client가 HTTP/2 유저라 하여도 `Server Push` client의 설정으로 인해서 기능이 불가능하다면 이런 경우에도 False가 반환된다. 하지만 정상적인 `Server Push`가 가능한 상황이라면 True가 반환되어, `Server Push`가 정상적으로 처리되었는지에 대해서 확인이 가능하다.
 
 #### wsgi.input stream object
 
