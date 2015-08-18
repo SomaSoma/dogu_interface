@@ -20,7 +20,7 @@ CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리
 
 | 환경변수 이름  | 의미				     |
 |------------------|-----------------------------|
-| `SERVER_PROTOCOL` | 만약 client의 request procotol의 버전이 HTTP/2라 한다면, 이 값은 HTTP/2.0다 |
+| `SERVER_PROTOCOL` | 만약 client의 request procotol의 버전이 HTTP/2라 한다면, 이 값은 HTTP/2.0다. *required* |
 | HTTP_ ```Variables``` | 이 변수목록에는 HTTP/2에서 정의하고 있는 가상헤더(pseudo-header)는 이에 포함되지 않는다. |
 | `RAW_PATH_INFO` | decoding이 안된 PATH_INFO 이다. |
 | `RAW_SCRIPT_NAME` | decoding이 안된 SCRIPT_NAME 이다. |
