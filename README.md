@@ -6,12 +6,11 @@
 
 ## Specification Overview
 
-기존 WSGI Application와의 하위호환을 위해 WSGI interface v1.0.1의 내용에서 변경된 사항은 없다. 하지만 HTTP/2에서 사용되는 ```Server Push```같은 기능을 지원하기 위해서 기존 environ에 ```dogu.push```라 이름지어진 push handler의 추가했다. 또한, client가 push를 받을 수 있는지 확인 가능한 boolean 타입의 ```dogu.push_enabled```를 추가하였다.
+기존 WSGI Application와의 하위호환을 위해 WSGI interface v1.0.1의 내용에서 변경된 사항은 없다. 하지만 HTTP/2에서 사용되는 ```Server Push```같은 기능을 지원하기 위해서 기존 environ에 ```dogu.push```라 이름지어진 callable object를 추가했다. 또한, client가 push를 받을 수 있는지 확인 가능한 boolean 타입의 ```dogu.push_enabled```를 추가하였다.
 
 WSGI 2.0 제안서에 있는 내용인 CGI와의 호환성을 위해서, RFC 3875에 명시되어 있는 CGI/1.1의 CGI 환경변수를 필수적으로 지원한다. request에 대한 input stream을 담고 있는 environ의```wsgi.input```에서 ```readline(size)```함수를 지원하는 stream을 사용하도록 한다.
 
 CGI환경변수인, SCRIPT_NAME과 PATH_INFO에는 percent encoding이라 불리는 url encoding이 적용된 원본 값을 decoding과정을 거친 값이 되고, 원본값은 RAW_PATH_INFO, RAW_SCRIPT_NAME, RAW_QUERY_STRING라는 이름으로 environ에 담는다.
-
 
 ## Specification Details
 
