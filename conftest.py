@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import sys
+from dogu_interface import init_dogu_interface_test
 
 
-def run_with_cgi(application):
+def default_run_with_cgi(application):
 
     environ = {}
 
@@ -80,9 +81,4 @@ def run_with_cgi(application):
 
 def pytest_generate_tests(metafunc):
 
-    if 'wsgi_handler' in metafunc.fixturenames:
-
-        def wsgi_handler(app):
-            return True
-
-        metafunc.parametrize(argnames='wsgi_handler', argvalues=[wsgi_handler], ids=['basic'], scope='function')
+    init_dogu_interface_test(metafunc, {"default": default_run_with_cgi})

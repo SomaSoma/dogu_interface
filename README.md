@@ -1,5 +1,7 @@
 # Python DoGu Interface v 1.0
 
+![](https://travis-ci.org/SomaSoma/dogu-interface.svg?branch=master)
+
 ## Abstract
 
 이 문서는 [PEP 3333](https://www.python.org/dev/peps/pep-3333/)에 명시되어 있는 WSGI v1.0.1(Python Web Server Gateway Interface)를 HTTP/2의 기능 활용을 위해서 내용을 확장하였고, [WSGI 2.0 Proposal](http://wsgi.readthedocs.org/en/latest/proposals-2.0.html) 내용을 부분 적용한 표준 interface입니다.
@@ -56,15 +58,22 @@ wsgi.input은 ```readline(limit=-1)```과 ```read(n=-1)```을 지원한다.
 
 ----
 
-# How To Contribute
+# Before your contribute
+
+## Purpose
+
+본 repo는 target application에서 DoGu interface의 규칙을 제대로 지키고 있는가에 대해서 확인할 수 있는 테스팅 코드들의 집합입니다. 테스트 코드들은 py.test를 지원한다는 가정하에 작성되어 있으며, `conftest.py`를 수정하여 여러 request 상황에 따른 서로 다른 경우의 테스팅이 가능합니다.
+
+이 테스트는 `wsgi_handler` fixture를 이용해서 test 함수에서 `(application)` 형식의 매개변수 형태를 갖는 callable object를 받을 수 있습니다. 위의 매개변수에서 `application`은 WSGI v 1.0.1 ([PEP 3333](https://www.python.org/dev/peps/pep-3333/))에서 정의하고 있는 Application/Framework side의 Application에 해당합니다.
+
+테스트코드 작성자는 간단한 `application`을 작성하여 DoGu interface를 지원하고 있는지 확인할 수 있습니다.
+
+## Checkpoint before pull request
 
 * 실행시 버그 없는 코드 받습니다.
-
-* PR 주세요.
 
 * 기본적인 컨벤션은 지켜주세요.
 
 * .pyc, .gitignore 등은 ignore해주세요.
 
-## How to Run test
-
+* travis로 2.6 - 3.4까지 통과된 코드만 받습니다.

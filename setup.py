@@ -5,13 +5,13 @@ from setuptools import setup, find_packages
 def install():
 
     setup(
-        name='dogu-interface',
+        name='dogu_interface',
         version='1.2',
         description='WSGI extension Inteface for HTTP/2',
         long_description='WSGI extension Inteface for HTTP/2',
         author='Luavis Kang',
         author_email='luaviskang@gmail.com',
-        url='https://github.com/SomaSoma/dogu-interface',
+        url='https://github.com/SomaSoma/dogu_interface',
         classifiers=['Development Status :: 1 - Planning',
         'License :: Freeware',
         'Operating System :: POSIX',
