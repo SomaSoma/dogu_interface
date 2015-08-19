@@ -53,3 +53,18 @@ wsgi.input은 ```readline(limit=-1)```과 ```read(n=-1)```을 지원한다.
 * ```readline(limit=-1)```은 stream으로 부터 한 줄을 읽어들이는 stream이고, `limit`이 설정되어 있다면 read를 할 때 `limit` 길이만큼 단위의 사이즈 만큼 읽어들인다. 한 줄의 기준은 b'\n'를 기준으로 한다.
 
 * ```read(n=-1)```은 `n`길이만큼의 binary를 읽어오게되고, n이 음수라면 읽을 수 있는 만큼의 모든 data를 읽을 수 있다.
+
+----
+
+# How To Contribute
+
+* 실행시 버그 없는 코드 받습니다.
+
+* PR 주세요.
+
+* 기본적인 컨벤션은 지켜주세요.
+
+* .pyc, .gitignore 등은 ignore해주세요.
+
+## How to Run test
+
