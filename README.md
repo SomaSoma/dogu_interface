@@ -65,7 +65,7 @@ wsgi.input은 ```readline(limit=-1)```과 ```read(n=-1)```을 지원한다.
 
 본 repo는 target application에서 DoGu interface의 규칙을 제대로 지키고 있는가에 대해서 확인할 수 있는 테스팅 코드들의 집합입니다. 테스트 코드들은 py.test를 지원한다는 가정하에 작성되어 있으며, `conftest.py`를 수정하여 여러 request 상황에 따른 서로 다른 경우의 테스팅이 가능합니다.
 
-이 테스트는 `wsgi_handler` fixture를 이용해서 test 함수에서 `(application)` 형식의 매개변수 형태를 갖는 callable object를 받을 수 있습니다. 위의 매개변수에서 `application`은 WSGI v 1.0.1 ([PEP 3333](https://www.python.org/dev/peps/pep-3333/))에서 정의하고 있는 Application/Framework side의 Application에 해당합니다.
+이 테스트는 `dogu_handler` fixture를 이용해서 test 함수에서 `(application)` 형식의 매개변수 형태를 갖는 callable object를 받을 수 있습니다. 위의 매개변수에서 `application`은 WSGI v 1.0.1 ([PEP 3333](https://www.python.org/dev/peps/pep-3333/))에서 정의하고 있는 Application/Framework side의 Application에 해당합니다.
 
 테스트코드 작성자는 간단한 `application`을 작성하여 DoGu interface를 지원하고 있는지 확인할 수 있습니다.
 
