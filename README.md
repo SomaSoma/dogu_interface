@@ -1,6 +1,7 @@
 # Python DoGu Interface v 1.0
 
-![](https://travis-ci.org/SomaSoma/dogu-interface.svg?branch=master)
+[![](https://travis-ci.org/SomaSoma/dogu_interface.svg?branch=master)](https://travis-ci.org/SomaSoma/dogu_interface)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 ## Abstract
 
