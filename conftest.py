@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 
 
@@ -11,7 +12,7 @@ def run_with_cgi(application):
     environ['PROTOCOL_VERSION'] = 'HTTP/2.0'
     environ['SCRIPT_NAME'] = 'test.py'
     environ['PATH_INFO'] = '/test/http'
-    environ['QUERY_STRING'] = 'a=b&c=헬로'
+    environ['QUERY_STRING'] = u'a=b&c=헬로'
     environ['CONTENT_TYPE'] = 'text/plain'
     environ['CONTENT_LENGTH'] = '10'
     environ['SERVER_PORT'] = '80'
