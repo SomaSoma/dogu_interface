@@ -1,9 +1,11 @@
+import inspect
 
 def test_write(dogu_handler):
     def application(environ, start_response):
 
         write = start_response('200 OK', [()])
         assert hasattr(write, '__call__')
+        assert inspect.getargspec(write)[0] == ['data']
 
         write(bytearray(10))
 

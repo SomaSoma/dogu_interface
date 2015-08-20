@@ -1,6 +1,14 @@
+import inspect
+
 
 def test_start_response(dogu_handler):
     def application(environ, start_response):
+
+        assert(
+            inspect.getargspec(start_response)[0] == ['status', 'response_headers', 'exc_info']
+        )
+
+        assert inspect.getargspec(start_response).defaults == (None,)
 
         start_response('200 OK', [()])
         return bytearray()
