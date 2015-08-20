@@ -66,9 +66,10 @@ def test_cgi_features(dogu_handler):
         for x in environ['REMOTE_ADDR'].split('.'):
             assert int(x)
 
+        start_response('200 OK', [])
+
         return bytearray()
 
-    start_response('200 OK', [])
     dogu_handler(application)
 
 
@@ -100,6 +101,7 @@ def test_wsgi_features(dogu_handler):
         assert type(environ.get('wsgi.multiprocess')) is bool
 
         start_response('200 OK', [])
+
         return bytearray()
 
     dogu_handler(application)
@@ -125,6 +127,7 @@ def test_dogu_features(dogu_handler):
         assert type(environ.get('dogu.push_enabled')) is bool
 
         start_response('200 OK', [])
+
         return bytearray()
 
     dogu_handler(application)
