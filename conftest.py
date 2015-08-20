@@ -26,7 +26,7 @@ def default_run_with_cgi(application):
 
     # wsgi v 1.0.1
 
-    environ['wsgi.input'] = sys.stdin.buffer
+    environ['wsgi.input'] = sys.stdin
     environ['wsgi.errors'] = sys.stderr
     environ['wsgi.version'] = (1, 0)
     environ['wsgi.multithread'] = False
