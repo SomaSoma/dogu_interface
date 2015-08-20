@@ -8,4 +8,9 @@ python:
     - "pypy"
 install:
     - python setup.py -q install
-script: "py.test"
+    - pip install flake8
+before_script:
+    flake8 .
+script:
+    py.test
+

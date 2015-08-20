@@ -40,7 +40,7 @@ def default_run_with_cgi(application):
             raise ValueError()
 
     def start_response(status, response_headers, exc_info=None):
-        if type(status) is not str:
+        if type(status) is not str or len(status) == 0:
             raise ValueError()
 
         if type(response_headers) is not list:
