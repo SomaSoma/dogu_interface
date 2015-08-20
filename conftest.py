@@ -22,7 +22,6 @@ def default_run_with_cgi(application):
     environ['HTTP_USER_AGENT'] = 'Mozila/5.0'
 
     environ['REMOTE_ADDR'] = '10.10.1.1'
-    environ['REMOTE_ADDR'] = '10.10.1.1'
 
     # wsgi v 1.0.1
 
