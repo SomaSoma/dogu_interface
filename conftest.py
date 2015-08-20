@@ -43,7 +43,7 @@ def default_run_with_cgi(application):
         if type(status) is not str:
             raise ValueError()
 
-        if response_headers is not list:
+        if type(response_headers) is not list:
             raise ValueError()
         else:
             for response_header in response_headers:
@@ -56,7 +56,7 @@ def default_run_with_cgi(application):
         return write
 
     def push_handler(push_headers, app):
-        if push_headers is not list:
+        if type(push_headers) is not list:
             raise ValueError()
         else:
             for response_header in push_headers:
