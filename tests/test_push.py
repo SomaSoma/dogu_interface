@@ -7,7 +7,10 @@ def test_push_handler_callable(dogu_handler):
         def push_application(environ, start_response):
             return bytearray()
 
-        environ['dogu.push']([('Accept', 'text/html, text/css')], push_application)
+        environ['dogu.push'](
+            [('Accept', 'text/html, text/css')],
+            push_application
+        )
 
         return bytearray()
 

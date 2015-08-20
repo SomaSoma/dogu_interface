@@ -15,7 +15,14 @@ def test_cgi_features(dogu_handler):
         # test HTTP_METHOD
         assert environ.get('HTTP_METHOD') is not None
         assert type(environ['HTTP_METHOD']) is str
-        assert environ['HTTP_METHOD'] in ['HEAD', 'POST', 'GET', 'PUT', 'DELETE']
+
+        assert environ['HTTP_METHOD'] in [
+            'HEAD',
+            'POST',
+            'GET',
+            'PUT',
+            'DELETE',
+        ]
 
         # test PROTOCOL_VERSION
         assert environ.get('PROTOCOL_VERSION') is not None
@@ -51,7 +58,10 @@ def test_cgi_features(dogu_handler):
         # test REMOTE_ADDR
         assert environ.get('REMOTE_ADDR') is not None
         assert type(environ['REMOTE_ADDR']) is str
-        assert re.match('^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', environ['REMOTE_ADDR'])
+        assert re.match(
+            '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$',
+            environ['REMOTE_ADDR']
+        )
 
         for x in environ['REMOTE_ADDR'].split('.'):
             assert int(x)

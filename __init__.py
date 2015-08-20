@@ -11,4 +11,9 @@ def init_dogu_interface_test(metafunc, dogu_handlers):
             ids.append(dogu_handler[0])
             argvalues.append(dogu_handler[1])
 
-        metafunc.parametrize(argnames='dogu_handler', argvalues=argvalues, ids=ids, scope='function')
+        metafunc.parametrize(
+            argnames='dogu_handler',
+            argvalues=argvalues,
+            ids=ids,
+            scope='function'
+        )
