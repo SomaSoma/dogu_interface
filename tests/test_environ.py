@@ -68,6 +68,7 @@ def test_cgi_features(dogu_handler):
 
         return bytearray()
 
+    start_response('200 OK', [])
     dogu_handler(application)
 
 
@@ -98,6 +99,7 @@ def test_wsgi_features(dogu_handler):
         assert environ.get('wsgi.multiprocess') is not None
         assert type(environ.get('wsgi.multiprocess')) is bool
 
+        start_response('200 OK', [])
         return bytearray()
 
     dogu_handler(application)
@@ -122,6 +124,7 @@ def test_dogu_features(dogu_handler):
         assert environ.get('dogu.push_enabled') is not None
         assert type(environ.get('dogu.push_enabled')) is bool
 
+        start_response('200 OK', [])
         return bytearray()
 
     dogu_handler(application)
