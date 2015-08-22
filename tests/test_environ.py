@@ -64,8 +64,8 @@ def test_cgi_features(dogu_handler):
             environ['REMOTE_ADDR']
         )
 
-        for x in environ['REMOTE_ADDR'].split('.'):
-            assert int(x)
+        for octet in environ['REMOTE_ADDR'].split('.'):
+            assert int(octet) < 256
 
         start_response('200 OK', [])
 
