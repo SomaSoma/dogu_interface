@@ -1,4 +1,5 @@
 import re
+import types
 
 
 def test_cgi_features(dogu_handler):
@@ -122,6 +123,7 @@ def test_dogu_features(dogu_handler):
 
         assert environ.get('dogu.push') is not None
         assert hasattr(environ.get('dogu.push'), '__call__')
+        assert isinstance(environ.get('dogu.push'), types.FunctionType)
 
         assert environ.get('dogu.push_enabled') is not None
         assert type(environ.get('dogu.push_enabled')) is bool
