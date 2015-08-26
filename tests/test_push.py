@@ -7,7 +7,7 @@ def test_push_handler_callable(dogu_handler):
         assert hasattr(environ.get('dogu.push'), '__call__')
 
         assert(
-            inspect.getargspec(environ.get('dogu.push'))[0] == ['push_headers', 'app']
+            inspect.getargspec(environ.get('dogu.push'))[0] == ['push_headers']
         )
 
         def push_application(environ, start_response):
