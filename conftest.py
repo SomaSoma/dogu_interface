@@ -55,7 +55,7 @@ def default_run_with_cgi(application):
 
         return write
 
-    def push_handler(push_headers, app):
+    def push_handler(push_headers):
         if type(push_headers) is not list:
             raise ValueError()
         else:
@@ -63,7 +63,7 @@ def default_run_with_cgi(application):
                 if type(response_header) is not tuple:
                     raise ValueError()
 
-        app(environ, start_response)
+        application(environ, start_response)
 
     # dogu v 1.0
 
