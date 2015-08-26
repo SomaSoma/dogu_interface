@@ -64,7 +64,9 @@ def default_run_with_cgi(application):
                 if type(response_header) is not tuple:
                     raise ValueError()
 
-        application(environ, start_response)
+        # need to call application but it will cause recursive in testing
+
+        return True
 
     # dogu v 1.0
 
