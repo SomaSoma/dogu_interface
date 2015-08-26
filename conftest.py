@@ -16,6 +16,7 @@ def default_run_with_cgi(application):
     environ['QUERY_STRING'] = 'a=b&c=헬로'
     environ['CONTENT_TYPE'] = 'text/plain'
     environ['CONTENT_LENGTH'] = '10'
+    environ['SERVER_NAME'] = '10.203.0.1'
     environ['SERVER_PORT'] = '80'
 
     environ['HTTP_ACCEPT'] = 'text/html; q=0.8, image/jpeg, */* '
