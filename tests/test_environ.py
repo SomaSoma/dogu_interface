@@ -1,4 +1,5 @@
 import re
+import types
 
 
 def test_cgi_features(dogu_handler):
@@ -63,8 +64,8 @@ def test_cgi_features(dogu_handler):
             environ['REMOTE_ADDR']
         )
 
-        for x in environ['REMOTE_ADDR'].split('.'):
-            assert int(x)
+        for octet in environ['REMOTE_ADDR'].split('.'):
+            assert int(octet) < 256
 
         start_response('200 OK', [])
 
@@ -122,6 +123,7 @@ def test_dogu_features(dogu_handler):
 
         assert environ.get('dogu.push') is not None
         assert hasattr(environ.get('dogu.push'), '__call__')
+        assert isinstance(environ.get('dogu.push'), types.FunctionType)
 
         assert environ.get('dogu.push_enabled') is not None
         assert type(environ.get('dogu.push_enabled')) is bool

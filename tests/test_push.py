@@ -7,15 +7,14 @@ def test_push_handler_callable(dogu_handler):
         assert hasattr(environ.get('dogu.push'), '__call__')
 
         assert(
-            inspect.getargspec(environ.get('dogu.push'))[0] == ['push_headers', 'app']
+            inspect.getargspec(environ.get('dogu.push'))[0] == ['push_headers']
         )
 
         def push_application(environ, start_response):
             return bytearray()
 
         environ['dogu.push'](
-            [('Accept', 'text/html, text/css')],
-            push_application
+            [('Accept', 'text/html, text/css')]
         )
 
         start_response('200 OK', [])
