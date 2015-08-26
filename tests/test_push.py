@@ -15,7 +15,6 @@ def test_push_handler_callable(dogu_handler):
 
         environ['dogu.push'](
             [('Accept', 'text/html, text/css')],
-            push_application
         )
 
         start_response('200 OK', [])
